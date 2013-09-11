@@ -1,8 +1,12 @@
 package com.example.unitdemo;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
@@ -29,6 +33,31 @@ public class MainActivity extends Activity implements OnClickListener{
 		return true;
 	}
 
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// TODO Auto-generated method stub
+		switch(item.getItemId()){
+		case R.id.action_settings:
+			AboutDialog();
+			break;
+		}
+		return super.onOptionsItemSelected(item);
+	}
+	void AboutDialog(){
+	Dialog alertDialog = new AlertDialog.Builder(this). 
+       setTitle("关于"). 
+       setMessage("作者：陆键霏"). 
+       setIcon(R.drawable.ic_launcher). 
+       setPositiveButton("了解", new DialogInterface.OnClickListener() { 
+           @Override 
+           public void onClick(DialogInterface dialog, int which) { 
+               // TODO Auto-generated method stub  
+           	dialog.dismiss();
+           } 
+       }). 
+       create(); 
+	   alertDialog.show(); 
+	}
 	@Override
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
